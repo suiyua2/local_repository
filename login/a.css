@@ -1,0 +1,55 @@
+#app .loginbox {
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  height: 300px;
+  width: 300px;
+  padding: 40px 20px 20px 20px;
+  margin: 100px auto;
+  background: white;
+}
+
+#app .loginbox h3 {
+  font-size: 16px;
+  font-family: "微软雅黑";
+  text-align: center;
+}
+
+#app .loginbox input {
+  height: 40px;
+  width: 100%;
+  border: 1px solid red;
+  margin: 10px 0;
+  border-radius: 2px;
+}
+
+#app .registerbox {
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  height: 300px;
+  width: 300px;
+  padding: 40px 20px 20px 20px;
+  margin: 100px auto;
+  background: white;
+}
+
+#app .registerbox h3 {
+  font-size: 16px;
+  font-family: "微软雅黑";
+  text-align: center;
+}
+
+#app .registerbox input {
+  height: 40px;
+  width: 100%;
+  border: 1px solid red;
+  margin: 10px 0;
+  border-radius: 2px;
+}
+
+#app .t h5 {
+  font-size: 26px;
+  font-family: "微软雅黑";
+  text-align: center;
+}

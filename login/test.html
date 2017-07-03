@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>测试页面</title>
+  <link rel="stylesheet" type="text/css" href="a.css" />
+</head>
+
+
+<body>
+  <div id="app">
+    <div class="loginbox" v-show="loginStatus">
+      <h3>用户登录</h3>
+      <form name="1" id="login">
+        <input type="text" class="username" v-model="input1" placeholder="请输入用户名">
+        <input type="password" class="psw" v-model="input2" placeholder="请输入登录密码">
+        <input type="button" value="登陆" @click="login()">
+        <input type="button" value="注册" @click="showregister()" class="blueBtn">
+      </form>
+    </div>
+
+    <div class="registerbox" v-show="registerStatus">
+      <h3>用户注册</h3>
+      <form name="2" id="register">
+        <input type="text" class="username" v-model="input3" placeholder="请输入用户名">
+        <input type="password" class="psw" v-model="input4" placeholder="请输入登录密码">
+        <input type="button" value="登陆" @click="showLogin()">
+        <input type="button" value="注册" @click="register()" class="blueBtn">
+      </form>
+    </div>
+
+    <div class="t" v-show="tStatus">
+      <h5>欢迎！</h5>
+    </div>
+  </div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      users: [{
+        username: "zhangsan",
+        password: "123456"
+      }, {
+        username: "zyc",
+        password: "654321"
+      }],
+      currentUser: {
+        username: ""
+      },
+      loginStatus: true,
+      registerStatus: false,
+      tStatus: false
+    },
+    methods: {
+      showLogin: function() {
+        document.getElementById("login").reset();
+        this.loginStatus = true;
+        this.registerStatus = false;
+      },
+
+      showregister: function() {
+        document.getElementById("register").reset();
+        this.loginStatus = false;
+        this.registerStatus = true;
+      },
+      login: function() {
+        var username = this.input1;
+        var psw = this.input2;
+        var flag = false;
+        for (var i = 0, len = this.users.length; i < len; i++) {
+          if (this.users[i].username === username && this.users[i].password === psw) {
+            flag = true;
+            alert("登陆成功!");
+            this.loginStatus = false;
+            // this.userbarStatus = true;
+            // this.currentUser.username = this.users[i].username;
+            this.tStatus = true;
+            // this.IrBtnStatus = false;
+            break;
+          }
+        }
+        if (!flag) {
+          alert("账号或密码输入有误");
+          document.getElementById("login").reset();
+        }
+      },
+      register: function() {
+        var obj = {};
+        var flag = false;
+
+        var username = this.input3;
+        var psw = this.input4;
+        for (var i = 0, len = this.users.length; i < len; i++) {
+          if (this.users[i].username === username) {
+            flag = true;
+            alert("用户名已被注册");
+            break;
+          }
+        }
+        if (!flag) {
+          if (username == null || psw == null || username == "" || psw == "") {
+            alert("账号密码不能为空！");
+          } else {
+            obj.username = username;
+            obj.password = psw;
+            this.users.push(obj);
+            alert("注册成功！");
+            document.getElementById("register").reset();
+            this.registerStatus = false;
+            this.loginStatus = true;
+          }
+        }
+      }
+    }
+  })
+</script>
+
+</html>
